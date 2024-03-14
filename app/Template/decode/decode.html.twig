@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ titre }}{% endblock %}
+
+{% block content %}
+    <h1>{{ titre }}</h1>
+
+    <form method="post" action="/decode">
+        <label for="data">Entrez n'importe quoi, on le décodera :</label><br><br>
+        <input type="text" id="data" name="data"><br> <br>
+        <input type="submit" value="Decodage 🔓">
+    </form>
+    {% if data %}
+        <h2>Votre chaîne de caractères décodée :</h2>
+        <p>{{ data }}</p>
+    {% endif %}
+
+{% endblock %}

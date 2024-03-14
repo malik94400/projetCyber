@@ -9,7 +9,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class HomeController implements ControllerInterface
+class DecodeController implements ControllerInterface
 {
     /**
      * @param Request $request Requête HTTP
@@ -20,12 +20,16 @@ class HomeController implements ControllerInterface
      */
     public function execute(Request $request): string|null
     {
-        return TwigCore::getEnvironment()->render('home/home.html.twig',
+        $code = $request->get('data');
+        $codeDecode = null;
+        if ($code) {
+            $codeDecode = base64_decode($code);
+        }
+        return TwigCore::getEnvironment()->render('decode/decode.html.twig',
             [
-                'titre'   => 'Hello World !',
+                'titre'   => 'Page Décodage',
                 'requete' => $request,
-                'lienBouton' => "/encode",
-                'lienBouton2' => "/decode",
+                'data' => $codeDecode,
 
             ]
         );

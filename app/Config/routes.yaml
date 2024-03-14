@@ -1,4 +1,16 @@
 index:
     uri: /
     controller: Controller\HomeController
-    httpMethod: [GET]
+    httpMethod: [ GET, POST ]
+
+
+encode:
+    uri: /encode                                          #Ceci est la route par défaut
+    controller: Controller\EncodeController
+    httpMethod: [ GET, POST ]
+
+
+decode:
+    uri: /decode                                          #Ceci est la route par défaut
+    controller: Controller\DecodeController
+    httpMethod: [ GET, POST ]
